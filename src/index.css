@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input[type] {
+    @apply px-3;
+  }
+}
+
+@layer components {
+  .img-logo {
+    @apply max-w-[96px];
+  }
+}
