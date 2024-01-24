@@ -1,7 +1,8 @@
+import React from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as Yup from "yup"
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { postForm } from "../services/formService"
 import { LetterContext } from "../providers/letterContext"
@@ -17,9 +18,8 @@ import { LoadingSpinner } from "./loading"
 // }
 
 export const LetterForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
-  const { getLetter } = useContext(LetterContext)
+  const { getLetter, updateName } = useContext(LetterContext)
   const [isLoading, setIsLoading] = useState(false)
 
   const validationSchema = Yup.object().shape({
@@ -76,9 +76,8 @@ export const LetterForm = () => {
   const watchLastName = watch("lastName", "")
   const watchFirstName = watch("firstName", "")
   useEffect(() => {
-    searchParams
-    setSearchParams({ first: watchFirstName, last: watchLastName })
-  }, [watchFirstName, watchLastName])
+    updateName({ first: watchFirstName, last: watchLastName })
+  }, [watchFirstName, watchLastName, updateName])
 
   return (
     <div>

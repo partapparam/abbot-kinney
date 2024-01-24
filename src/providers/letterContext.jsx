@@ -14,13 +14,25 @@ export const LetterContext = createContext({})
 
 export const LetterProvider = ({ children }) => {
   const [letter, setLetter] = useState("")
+  const [name, setName] = useState("")
 
   const updateLetter = (letterString) => {
     setLetter(letterString)
   }
+  const updateName = (name) => {
+    const { first, last } = name
+    setName(`${first} ${last}`)
+  }
+
   const getLetter = () => letter
+
+  const getName = () => {
+    return name
+  }
   return (
-    <LetterContext.Provider value={{ updateLetter, getLetter }}>
+    <LetterContext.Provider
+      value={{ updateLetter, getLetter, updateName, getName }}
+    >
       {children}
     </LetterContext.Provider>
   )
