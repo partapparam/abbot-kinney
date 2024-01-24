@@ -101,7 +101,7 @@ export const getTableData = async () => {
   })
 }
 
-export const getAdminEditorContent = async (id: string) => {
+export const getAdminEditorContent = async (id) => {
   const base = new Airtable({
     apiKey: import.meta.env.VITE_AIRTABLE_TOKEN,
   }).base(import.meta.env.VITE_AIRTABLE_BASE)

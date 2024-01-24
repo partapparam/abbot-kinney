@@ -4,7 +4,6 @@ import { getTableData } from "../services/formService"
 import { pdfExporter } from "quill-to-pdf"
 import { saveAs } from "file-saver"
 import Delta from "quill-delta"
-import { HEADERHTML } from "../constants/letter"
 import Merger from "../services/fileMergerService"
 import { LoadingSpinner } from "./loading"
 
