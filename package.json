@@ -14,6 +14,7 @@
     "airtable": "^0.12.2",
     "file-saver": "^2.0.5",
     "firebase": "^10.7.2",
+    "framer-motion": "^11.0.3",
     "pdf-merger-js": "^5.0.0",
     "quill-delta": "^5.1.0",
     "quill-to-pdf": "^1.0.7",
