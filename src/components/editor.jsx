@@ -49,7 +49,6 @@ const Editor = () => {
       {/* {isLoading && <LoadingSpinner />} */}
       {/* {!isLoading && ( */}
       <div>
-        {/* <Suspense fallback={"Loading.....Lets see what happends"}> */}
         <LetterHeader header={header} />
         <ReactQuill
           value={editorHtml}
@@ -59,7 +58,6 @@ const Editor = () => {
           theme="bubble"
         />
         <LetterFooter />
-        {/* </Suspense> */}
       </div>
       {/* )} */}
     </div>
