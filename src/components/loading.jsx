@@ -1,7 +1,8 @@
 import React from "react"
-import { motion } from "framer-motion"
 
-export const LoadingSpinner = () => {
+import transition from "./transition"
+
+const LoadingSpinner = () => {
   return (
     <div
       role="status"
@@ -27,3 +28,5 @@ export const LoadingSpinner = () => {
     </div>
   )
 }
+
+export default transition(LoadingSpinner)

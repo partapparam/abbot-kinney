@@ -1,9 +1,9 @@
 import { motion } from "framer-motion"
 import React from "react"
 
-const TransitionComponent = ({ ChildComponent }) => {
-  return () => {
-    ;<>
+const transition = ({ ChildComponent }) => {
+  return (
+    <>
       <ChildComponent />
       <motion.div
         className="bg-black"
@@ -21,7 +21,7 @@ const TransitionComponent = ({ ChildComponent }) => {
         transition={{ duration: 1 }}
       />
     </>
-  }
+  )
 }
 
-export default TransitionComponent
+export default transition
