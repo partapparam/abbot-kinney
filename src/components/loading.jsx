@@ -1,12 +1,15 @@
 import React from "react"
+import { motion } from "framer-motion"
 
-import transition from "./transition"
-
-const LoadingSpinner = () => {
+export const LoadingSpinner = () => {
   return (
-    <div
+    <motion.div
       role="status"
       className="text-center w-full h-full py-5 flex items-center justify-center fixed top-0 left-0 bg-white opacity-90"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, backgroundColor: "red" }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 3000 }}
     >
       <svg
         aria-hidden="true"
@@ -25,8 +28,6 @@ const LoadingSpinner = () => {
         />
       </svg>
       <span className="sr-only">Loading...</span>
-    </div>
+    </motion.div>
   )
 }
-
-export default transition(LoadingSpinner)
