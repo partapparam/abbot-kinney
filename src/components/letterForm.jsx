@@ -62,11 +62,7 @@ export const LetterForm = () => {
         throw Error("Please resubmit.")
       }
     } catch (error) {
-      console.log("we had an error")
-      // This will allow us to handle the error message and please Typescript
-      if (error instanceof Error) {
-        alert(error.message)
-      }
+      alert(error.message)
     } finally {
       reset()
       setIsLoading(false)
@@ -86,7 +82,7 @@ export const LetterForm = () => {
         <div>
           <div className="flex flex-col pt-10 pb-2 text-center">
             <p className="text-2xl pb-1 text-[#2385A3]">
-              You're ready to send.
+              You are ready to send
             </p>
             <p>To send the above letter, please enter info below:</p>
           </div>
