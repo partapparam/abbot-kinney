@@ -1,7 +1,7 @@
 import ReactQuill from "react-quill"
 import React from "react"
 import "react-quill/dist/quill.bubble.css"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useLayoutEffect, useState } from "react"
 import { LetterHeader } from "./letterHeader"
 import { LetterFooter } from "./letterFooter"
 import { LetterContext } from "../providers/letterContext"
@@ -19,7 +19,7 @@ const Editor = () => {
     toolbar: false,
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetch = async () => {
       setIsLoading(true)
       const results = await getContent()
@@ -42,16 +42,15 @@ const Editor = () => {
   }
 
   return (
-    <motion.div
-      className="flex flex-col bg-white border-8 border-[#f5eee5]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 3 }}
-    >
+    <div className="flex flex-col bg-white border-8 border-[#f5eee5]">
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5 }}
+        >
           <LetterHeader header={header} />
           <ReactQuill
             value={editorHtml}
@@ -61,9 +60,9 @@ const Editor = () => {
             theme="bubble"
           />
           <LetterFooter />
-        </div>
+        </motion.div>
       )}
-    </motion.div>
+    </div>
   )
 }
 

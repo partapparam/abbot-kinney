@@ -13,7 +13,7 @@ const Letter = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 1.5 }}
     >
       <div className="w-5/6 sm:w-2/3 m-auto">
         <div className="min-h-48 mb-6 pt-16">
