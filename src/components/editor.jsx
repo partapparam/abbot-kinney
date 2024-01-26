@@ -7,6 +7,7 @@ import { LetterFooter } from "./letterFooter"
 import { LetterContext } from "../providers/letterContext"
 import { getContent } from "../services/formService"
 import { LoadingSpinner } from "./loading"
+import { motion } from "framer-motion"
 
 const Editor = () => {
   const [editorHtml, setEditorHtml] = useState()
@@ -41,7 +42,13 @@ const Editor = () => {
   }
 
   return (
-    <div className="flex flex-col bg-white border-8 border-[#f5eee5]">
+    <motion.div
+      className="flex flex-col bg-white border-8 border-[#f5eee5]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 3 }}
+    >
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <div>
@@ -56,7 +63,7 @@ const Editor = () => {
           <LetterFooter />
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

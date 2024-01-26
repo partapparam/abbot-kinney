@@ -7,9 +7,9 @@ export const LoadingSpinner = () => {
       role="status"
       className="text-center w-full h-full py-5 flex items-center justify-center fixed top-0 left-0 bg-white opacity-90"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, backgroundColor: "red" }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 3000 }}
+      transition={{ duration: 3 }}
     >
       <svg
         aria-hidden="true"
