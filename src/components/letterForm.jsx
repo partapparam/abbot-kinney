@@ -5,8 +5,9 @@ import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { postForm } from "../services/formService"
-import { LetterContext } from "../providers/letterContext"
+import { NameContext } from "../providers/nameContext"
 import { LoadingSpinner } from "./loading"
+import { LetterContext } from "../providers/letterContext"
 
 // type LetterFormValues = {
 //   firstName: string
@@ -19,7 +20,8 @@ import { LoadingSpinner } from "./loading"
 
 export const LetterForm = () => {
   const navigate = useNavigate()
-  const { getLetter, updateName } = useContext(LetterContext)
+  const { updateName } = useContext(NameContext)
+  const { getLetter } = useContext(LetterContext)
   const [isLoading, setIsLoading] = useState(false)
 
   const validationSchema = Yup.object().shape({

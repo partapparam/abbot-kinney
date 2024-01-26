@@ -47,6 +47,7 @@ const AdminTable = () => {
   }, [])
 
   const handleDownload = async (record) => {
+    // TODO How to get the header from the letter
     const delta = JSON.parse(record.letter)
     const nameString = `${record.firstName} ${record.lastName}`
     const d = new Delta()

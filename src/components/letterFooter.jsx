@@ -1,9 +1,9 @@
 import React from "react"
 import { useEffect, useState, useContext } from "react"
-import { LetterContext } from "../providers/letterContext"
+import { NameContext } from "../providers/nameContext"
 
 export const LetterFooter = () => {
-  const { getName } = useContext(LetterContext)
+  const { getName } = useContext(NameContext)
   const [name, setName] = useState("Your name")
 
   useEffect(() => {
