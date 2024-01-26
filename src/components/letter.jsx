@@ -1,21 +1,13 @@
 import logo from "../assets/logo-green-ivory-black.webp"
-import React, { Suspense } from "react"
+import React from "react"
 import Editor from "./editor"
 import { LetterForm } from "./letterForm"
 import { Footer } from "./footer"
 import hotel from "../assets/hotel-transparent.png"
-import { motion } from "framer-motion"
-import { LoadingSpinner } from "./loading"
 
 const Letter = () => {
   return (
-    <motion.div
-      className="flex flex-col bg-[#f9f5ef]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1.5 }}
-    >
+    <div className="flex flex-col bg-[#f9f5ef]">
       <div className="w-5/6 sm:w-2/3 m-auto">
         <div className="min-h-48 mb-6 pt-16">
           <img src={logo} alt="" className="h-auto img-logo" />
@@ -32,10 +24,8 @@ const Letter = () => {
           </p>
         </div>
         <div className="">
-          <Suspense fallback={<LoadingSpinner />}>
-            <Editor />
-            <LetterForm />
-          </Suspense>
+          <Editor />
+          <LetterForm />
         </div>
       </div>
       <div className="">
@@ -46,7 +36,7 @@ const Letter = () => {
         />
       </div>
       <Footer />
-    </motion.div>
+    </div>
   )
 }
 

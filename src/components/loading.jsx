@@ -6,10 +6,10 @@ export const LoadingSpinner = () => {
     <motion.div
       role="status"
       className="text-center bg-red w-full h-full py-5 flex items-center justify-center fixed top-0 left-0 bg-white opacity-90"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 3 }}
+      transition={{ duration: 1 }}
     >
       <svg
         aria-hidden="true"
