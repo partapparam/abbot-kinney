@@ -5,7 +5,7 @@ export const LoadingSpinner = () => {
   return (
     <motion.div
       role="status"
-      className="text-center w-full h-full py-5 flex items-center justify-center fixed top-0 left-0 bg-white opacity-90"
+      className="text-center bg-red w-full h-full py-5 flex items-center justify-center fixed top-0 left-0 bg-white opacity-90"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

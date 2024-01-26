@@ -1,5 +1,5 @@
 import ReactQuill from "react-quill"
-import React from "react"
+import React, { Suspense } from "react"
 import "react-quill/dist/quill.bubble.css"
 import { useContext, useLayoutEffect, useState } from "react"
 import { LetterHeader } from "./letterHeader"
@@ -45,22 +45,19 @@ const Editor = () => {
     <div className="flex flex-col bg-white border-8 border-[#f5eee5]">
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5 }}
-        >
-          <LetterHeader header={header} />
-          <ReactQuill
-            value={editorHtml}
-            defaultValue={editorHtml}
-            onChange={handleChange}
-            modules={editorModules}
-            theme="bubble"
-          />
-          <LetterFooter />
-        </motion.div>
+        <div>
+          <Suspense fallback={<LoadingSpinner />}>
+            <LetterHeader header={header} />
+            <ReactQuill
+              value={editorHtml}
+              defaultValue={editorHtml}
+              onChange={handleChange}
+              modules={editorModules}
+              theme="bubble"
+            />
+            <LetterFooter />
+          </Suspense>
+        </div>
       )}
     </div>
   )

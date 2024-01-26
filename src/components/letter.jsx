@@ -1,10 +1,11 @@
 import logo from "../assets/logo-green-ivory-black.webp"
-import React from "react"
+import React, { Suspense } from "react"
 import Editor from "./editor"
 import { LetterForm } from "./letterForm"
 import { Footer } from "./footer"
 import hotel from "../assets/hotel-transparent.png"
 import { motion } from "framer-motion"
+import { LoadingSpinner } from "./loading"
 
 const Letter = () => {
   return (
@@ -31,8 +32,10 @@ const Letter = () => {
           </p>
         </div>
         <div className="">
-          <Editor />
-          <LetterForm />
+          <Suspense fallback={<LoadingSpinner />}>
+            <Editor />
+            <LetterForm />
+          </Suspense>
         </div>
       </div>
       <div className="">
