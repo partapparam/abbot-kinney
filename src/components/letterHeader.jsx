@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import DOMPurify from "dompurify"
+import PropTypes from "prop-types"
+
 export const LetterHeader = ({ header }) => {
   const htmlRef = useRef(null)
 
@@ -10,9 +12,6 @@ export const LetterHeader = ({ header }) => {
      */
     const clean = DOMPurify.sanitize(header)
     htmlRef.current.innerHTML = clean
-    if (clean) {
-      setLoading(false)
-    }
   }, [htmlRef, header])
 
   return (
@@ -26,4 +25,8 @@ export const LetterHeader = ({ header }) => {
       </div>
     </>
   )
+}
+
+LetterHeader.propTypes = {
+  header: PropTypes.string,
 }
