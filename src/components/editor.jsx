@@ -30,7 +30,7 @@ const Editor = () => {
         const header = results[1].content
         setEditorHtml(JSON.parse(letter))
         setHeader(JSON.parse(header))
-      }, 3000)
+      }, 500)
     }
     fetch()
       .catch((err) => console.log(err))

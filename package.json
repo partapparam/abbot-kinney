@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "airtable": "^0.12.2",
+    "dompurify": "^3.0.8",
     "file-saver": "^2.0.5",
     "firebase": "^10.7.2",
     "framer-motion": "^11.0.3",

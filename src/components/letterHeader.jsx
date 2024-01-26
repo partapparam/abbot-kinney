@@ -1,11 +1,18 @@
-import React, { Ref, useEffect, useRef } from "react"
-
+import React, { useEffect, useRef, useState } from "react"
+import DOMPurify from "dompurify"
 export const LetterHeader = ({ header }) => {
-  const obj = { __html: header }
   const htmlRef = useRef(null)
 
   useEffect(() => {
-    htmlRef.current.innerHTML = header
+    /**
+     * Parsing HTML strings in React can be risky, opening us up to XSS vulnerability
+     * DOMPurify will sanitize the HTML string to ensure no harmful data is present
+     */
+    const clean = DOMPurify.sanitize(header)
+    htmlRef.current.innerHTML = clean
+    if (clean) {
+      setLoading(false)
+    }
   }, [htmlRef, header])
 
   return (
@@ -20,5 +27,3 @@ export const LetterHeader = ({ header }) => {
     </>
   )
 }
-
-// dangerouslySetInnerHTML = { obj }
