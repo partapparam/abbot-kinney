@@ -20,6 +20,6 @@ export const NameProvider = ({ children }) => {
   )
 }
 
-NameProvider.propTypes = {
-  children: PropTypes.elementType,
-}
+// NameProvider.propTypes = {
+//   children: PropTypes.elementType,
+// }

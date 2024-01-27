@@ -39,6 +39,6 @@ export const LetterProvider = ({ children }) => {
   )
 }
 
-LetterProvider.propTypes = {
-  children: PropTypes.elementType,
-}
+// LetterProvider.propTypes = {
+//   children: PropTypes.elementType,
+// }

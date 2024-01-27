@@ -35,6 +35,7 @@ const Editor = () => {
   const handleChange = async (content, delta, source, editor) => {
     setEditorHtml(content)
     const text = editor.getText()
+    console.log(header + text)
     const jsonText = JSON.stringify(text)
     updateLetter(jsonText)
   }

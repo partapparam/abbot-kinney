@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import DOMPurify from "dompurify"
 import PropTypes from "prop-types"
 
 export const LetterHeader = ({ header }) => {
   const htmlRef = useRef(null)
-
   useEffect(() => {
     /**
      * Parsing HTML strings in React can be risky, opening us up to XSS vulnerability

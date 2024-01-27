@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import React from "react"
 import { getContent, getTableData } from "../services/formService"
 import { pdfExporter } from "quill-to-pdf"
@@ -35,7 +35,6 @@ const AdminTable = () => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [header, setHeader] = useState()
-  const htmlRef = useRef(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +43,7 @@ const AdminTable = () => {
       const contentResponse = await getContent()
       const letterHeader = contentResponse[1].content
       setData(tableResponse)
-      setHeader(letterHeader)
+      setHeader(JSON.parse(letterHeader))
     }
     fetchData()
       .catch((err) => console.log(err))
@@ -55,9 +54,14 @@ const AdminTable = () => {
     // TODO How to get the header from the letter
     const delta = JSON.parse(record.letter)
     const nameString = `${record.firstName} ${record.lastName}`
-    console.log(JSON.parse(header))
+    const plainTextString = header
+      .replaceAll("<p>", "")
+      .replaceAll("</p>", "\n")
+      .replaceAll("<br>", "")
+
+    console.log(plainTextString)
     const d = new Delta()
-      .insert(JSON.parse(header))
+      .insert(plainTextString)
       .insert("\n")
       .insert(delta)
       .insert("\nSincerely,\n")

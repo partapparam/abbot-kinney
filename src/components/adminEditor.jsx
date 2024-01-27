@@ -32,7 +32,7 @@ const AdminEditor = () => {
     toolbar: false,
   }
 
-  const handleChange = (content) => {
+  const handleChange = (content, delta, source, editor) => {
     setLetter(content)
   }
 
