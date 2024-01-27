@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import React from "react"
-import { getTableData } from "../services/formService"
+import { getContent, getTableData } from "../services/formService"
 import { pdfExporter } from "quill-to-pdf"
 import { saveAs } from "file-saver"
 import Delta from "quill-delta"
@@ -34,12 +34,17 @@ const QUILLCONFIG = {
 const AdminTable = () => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [header, setHeader] = useState()
+  const htmlRef = useRef(null)
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
-      const response = await getTableData()
-      setData(response)
+      const tableResponse = await getTableData()
+      const contentResponse = await getContent()
+      const letterHeader = contentResponse[1].content
+      setData(tableResponse)
+      setHeader(letterHeader)
     }
     fetchData()
       .catch((err) => console.log(err))
@@ -50,8 +55,9 @@ const AdminTable = () => {
     // TODO How to get the header from the letter
     const delta = JSON.parse(record.letter)
     const nameString = `${record.firstName} ${record.lastName}`
+    console.log(JSON.parse(header))
     const d = new Delta()
-      .insert(HEADERHTML)
+      .insert(JSON.parse(header))
       .insert("\n")
       .insert(delta)
       .insert("\nSincerely,\n")

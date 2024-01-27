@@ -1,5 +1,6 @@
 import { useState, createContext } from "react"
 import React from "react"
+import PropTypes from "prop-types"
 
 // interface Props {
 //   children?: ReactNode
@@ -36,4 +37,8 @@ export const LetterProvider = ({ children }) => {
       {children}
     </LetterContext.Provider>
   )
+}
+
+LetterProvider.propTypes = {
+  children: PropTypes.elementType,
 }

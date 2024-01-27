@@ -1,5 +1,6 @@
 import { useState, createContext } from "react"
 import React from "react"
+import PropTypes from "prop-types"
 
 export const NameContext = createContext({})
 
@@ -17,4 +18,8 @@ export const NameProvider = ({ children }) => {
       {children}
     </NameContext.Provider>
   )
+}
+
+NameProvider.propTypes = {
+  children: PropTypes.elementType,
 }

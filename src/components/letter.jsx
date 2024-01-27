@@ -4,6 +4,8 @@ import Editor from "./editor"
 import { LetterForm } from "./letterForm"
 import { Footer } from "./footer"
 import hotel from "../assets/hotel-transparent.png"
+import { LetterProvider } from "../providers/letterContext"
+import { NameProvider } from "../providers/nameContext"
 
 const Letter = () => {
   return (
@@ -24,8 +26,12 @@ const Letter = () => {
           </p>
         </div>
         <div className="">
-          <Editor />
-          <LetterForm />
+          <LetterProvider>
+            <NameProvider>
+              <Editor />
+              <LetterForm />
+            </NameProvider>
+          </LetterProvider>
         </div>
       </div>
       <div className="">

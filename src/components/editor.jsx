@@ -1,7 +1,7 @@
 import ReactQuill from "react-quill"
 import React from "react"
 import "react-quill/dist/quill.bubble.css"
-import { useContext, useLayoutEffect, useEffect, useState } from "react"
+import { useContext, useLayoutEffect, useState } from "react"
 import { LetterHeader } from "./letterHeader"
 import { LetterFooter } from "./letterFooter"
 import { LetterContext } from "../providers/letterContext"
