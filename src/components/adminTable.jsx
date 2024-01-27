@@ -54,10 +54,9 @@ const AdminTable = () => {
     // TODO How to get the header from the letter
     const delta = JSON.parse(record.letter)
     const nameString = `${record.firstName} ${record.lastName}`
-    const plainTextString = header
-      .replaceAll("<p>", "")
-      .replaceAll("</p>", "\n")
-      .replaceAll("<br>", "")
+    // The regex will remove all tags from the string
+    // we remove the <br> first ensure better spacing
+    const plainTextString = header.replace("<br>", "").replace(/<[^>]+>/g, "\n")
 
     console.log(plainTextString)
     const d = new Delta()
