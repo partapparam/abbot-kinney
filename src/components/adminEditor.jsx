@@ -61,27 +61,29 @@ const AdminEditor = () => {
   }
 
   return (
-    <div className="py-5 px-5 sm:px-15 md:px-20 flex flex-col bg-red-300">
+    <div className="py-5 px-5 sm:px-15 md:px-20 flex flex-col">
       {isLoading && <LoadingSpinner />}
       {letter && !isLoading && (
-        <div className="border-8 border-[#f5eee5]">
-          <h1>Update {capitalize(type)}</h1>
-          <ReactQuill
-            value={letter}
-            defaultValue={letter}
-            onChange={handleChange}
-            modules={editorModules}
-            theme="bubble"
-          />
+        <div>
+          <p className="text-4xl py-4 font-bold">Update {capitalize(type)}</p>
+          {/* border-[#f5eee5] */}
+          <div className="border-8 border-black rounded-md shadow-md p-5">
+            <ReactQuill
+              value={letter}
+              defaultValue={letter}
+              onChange={handleChange}
+              modules={editorModules}
+              theme="bubble"
+            />
+          </div>
+          <button
+            onClick={submitChanges}
+            className="px-6 py-2 my-4 w-[128px] text-white bg-green-500 hover:bg-green-600 rounded-md"
+          >
+            Save
+          </button>
         </div>
       )}
-
-      <button
-        onClick={submitChanges}
-        className="px-4 py-2 my-2 w-[96px] text-white bg-green-500 hover:bg-green-600 rounded-md"
-      >
-        Save
-      </button>
     </div>
   )
 }
