@@ -51,7 +51,6 @@ const AdminTable = () => {
   }, [])
 
   const handleDownload = async (record) => {
-    // TODO How to get the header from the letter
     const delta = JSON.parse(record.letter)
     const nameString = `${record.firstName} ${record.lastName}`
     // The regex will remove all tags from the string
