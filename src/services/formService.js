@@ -82,7 +82,6 @@ export const getTableData = async () => {
       .eachPage(
         function page(records, fetchNextPage) {
           records.forEach((record) => {
-            console.log(record)
             allCases.push({
               id: record._rawJson.id,
               ...record._rawJson.fields,
