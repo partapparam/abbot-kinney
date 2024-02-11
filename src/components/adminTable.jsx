@@ -6,6 +6,7 @@ import { saveAs } from "file-saver"
 import Delta from "quill-delta"
 import Merger from "../services/fileMergerService"
 import { LoadingSpinner } from "./loading"
+import DataTable from "./table"
 
 // interface Config {
 //   styles: {
@@ -131,9 +132,6 @@ const AdminTable = () => {
                       <td className="px-2 py-2 ">
                         {record?.firstName} {record?.lastName}
                       </td>
-                      <td className="px-2 py-2 ">
-                        {record?.firstName} {record?.lastName}
-                      </td>
                       <td className="px-2 py-2 ">{record.email}</td>
                       <td className="px-2 py-2 text-center ">
                         {record.permission ? "Yes" : "No"}
@@ -156,6 +154,7 @@ const AdminTable = () => {
           </table>
         </>
       )}
+      <DataTable dataRows={data} />
     </div>
   )
 }
