@@ -1,17 +1,22 @@
 import * as React from "react"
-import { useMemo, useState, useCallback } from "react"
+import { useMemo, useState, useCallback, useEffect } from "react"
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
 import DeleteIcon from "@mui/icons-material/Delete"
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline"
+import { Download } from "@mui/icons-material"
 
 export default function DataTable({ dataRows }) {
-  const [rows, setRows] = useState(dataRows)
+  const [rd, setRd] = useState([])
+  // Set the initial state of the data for grid
+  useEffect(() => {
+    setRd(dataRows)
+  }, [dataRows])
   // whats the use of this set timeout
   const deleteUser = useCallback(
     (id) => () => {
       setTimeout(() => {
         console.log("this is being deleted", id)
-        setRows((prevRows) => prevRows.filter((row) => row.id !== id))
+        setRd((prevRows) => prevRows.filter((row) => row.id !== id))
       })
     },
     []
@@ -57,18 +62,31 @@ export default function DataTable({ dataRows }) {
         field: "actions",
         type: "actions",
         width: 80,
+        renderHeader: () => {
+          return <DownloadForOfflineIcon />
+        },
         getActions: (params) => [
           <GridActionsCellItem
-            key={params.id}
+            key={`download-${params.id}`}
             icon={<DownloadForOfflineIcon />}
             label="Delete"
-            onClick={deleteUser(params.id)}
+            onClick={download(params.id)}
           />,
+        ],
+      },
+      {
+        field: "actions",
+        type: "actions",
+        width: 80,
+        renderHeader: () => {
+          return <DeleteIcon />
+        },
+        getActions: (params) => [
           <GridActionsCellItem
-            key={params.id}
+            key={`delete-${params.id}`}
             icon={<DeleteIcon />}
             label="Delete"
-            onClick={download(params.id)}
+            onClick={deleteUser(params.id)}
           />,
         ],
       },
@@ -82,7 +100,7 @@ export default function DataTable({ dataRows }) {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={dataRows}
+        rows={rd}
         columns={columns}
         initialState={{
           pagination: {
