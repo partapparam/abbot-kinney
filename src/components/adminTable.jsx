@@ -77,7 +77,7 @@ const AdminTable = () => {
   const saveOne = async (record) => {
     const blob = await handleDownload(record)
     saveAs(blob, `${record.firstName}_${record.lastName}_letter.pdf`)
-  }
+  
 
   const saveAll = async () => {
     const blobs = []

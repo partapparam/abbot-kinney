@@ -64,7 +64,7 @@ export default function DataTable({ dataRows, saveOne, saveAll }) {
         renderHeader: () => {
           return (
             <div>
-              <button className="font-bold" onClick={saveAll(selected)}>
+              <button className="font-bold" onClick={saveAll}>
                 Download
               </button>
             </div>
@@ -75,7 +75,7 @@ export default function DataTable({ dataRows, saveOne, saveAll }) {
             key={`download-${params.id}`}
             icon={<DownloadForOfflineIcon />}
             label="Delete"
-            onClick={saveOne(params)}
+            onClick={saveOne}
           />,
         ],
       },
