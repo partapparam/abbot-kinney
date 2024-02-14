@@ -3,10 +3,10 @@ import { useMemo, useState, useCallback, useEffect } from "react"
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
 import DeleteIcon from "@mui/icons-material/Delete"
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline"
-import { Download } from "@mui/icons-material"
 
-export default function DataTable({ dataRows }) {
+export default function DataTable({ dataRows, saveOne, saveAll }) {
   const [rd, setRd] = useState([])
+  const [selected, setSelected] = []
   // Set the initial state of the data for grid
   useEffect(() => {
     setRd(dataRows)
@@ -30,7 +30,6 @@ export default function DataTable({ dataRows }) {
   )
   const columns = useMemo(
     () => [
-      { field: "id", headerName: "ID", width: 20 },
       {
         field: "firstName",
         headerName: "First Name",
@@ -59,27 +58,37 @@ export default function DataTable({ dataRows }) {
         sortable: false,
       },
       {
-        field: "actions",
+        field: "download",
         type: "actions",
-        width: 80,
+        width: 140,
         renderHeader: () => {
-          return <DownloadForOfflineIcon />
+          return (
+            <div>
+              <button className="font-bold" onClick={saveAll(selected)}>
+                Download
+              </button>
+            </div>
+          )
         },
         getActions: (params) => [
           <GridActionsCellItem
             key={`download-${params.id}`}
             icon={<DownloadForOfflineIcon />}
             label="Delete"
-            onClick={download(params.id)}
+            onClick={saveOne(params)}
           />,
         ],
       },
       {
-        field: "actions",
+        field: "delete",
         type: "actions",
-        width: 80,
+        width: 140,
         renderHeader: () => {
-          return <DeleteIcon />
+          return (
+            <div>
+              <button className="font-bold">Delete</button>
+            </div>
+          )
         },
         getActions: (params) => [
           <GridActionsCellItem
